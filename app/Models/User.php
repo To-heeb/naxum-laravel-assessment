@@ -49,8 +49,13 @@ class User extends Authenticatable
         return $this->hasOne(User::class, 'referred_by');
     }
 
+    public function user_category()
+    {
+        return $this->hasOne(UserCategory::class);
+    }
+
     public function order()
     {
-        return $this->hasMany(Order::class, 'referred_by');
+        return $this->hasMany(Order::class, 'purchaser_id');
     }
 }

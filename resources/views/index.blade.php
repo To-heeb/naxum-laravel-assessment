@@ -54,8 +54,8 @@
 <script src="{{ asset('assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js' )}}"></script>
 <script src="{{ asset('assets/js/deznav-init.js')}}"></script>
 <script src="{{ asset('assets/js/custom.js')}}"></script> 
-<script src="{{ asset('assets/js/demo.js')}}"></script>
-<script src="{{ asset('assets/js/styleSwitcher.js')}}"></script>
+{{-- <script src="{{ asset('assets/js/demo.js')}}"></script>
+<script src="{{ asset('assets/js/styleSwitcher.js')}}"></script> --}}
 </body>
 
 </html>

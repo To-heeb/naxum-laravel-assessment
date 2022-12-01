@@ -2512,5 +2512,5 @@
 		<script src="{{ asset('assets/js/plugins-init/toastr-init.js') }}"></script>
         <script src="{{ asset('assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
 		<script src="{{ asset('assets/js/plugins-init/datatables.init.js') }}"></script>
-	
+    
 @endsection

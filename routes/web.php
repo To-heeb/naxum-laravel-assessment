@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +18,10 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/task_one', function () {
-    return view('task_one');
-})->name('task_one');
+Route::get('/test', [HomeController::class, 'index'])->name('index');
 
-Route::get('/task_two', function () {
-    return view('task_two');
-})->name('task_two');
+Route::get('/task_one', [HomeController::class, 'task_one'])->name('task_one');
+
+Route::get('/task_two', [HomeController::class, 'task_two'])->name('task_two');

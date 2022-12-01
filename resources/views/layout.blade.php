@@ -8,12 +8,12 @@
 	<meta name="author" content="" />
 	<meta name="robots" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="description" content="Jobie - Crypto Codeigniter Admin Dashboard" />
-	<meta property="og:title" content="Jobie - Crypto Codeigniter Admin Dashboard" />
-	<meta property="og:description" content="Jobie - Crypto Codeigniter Admin Dashboard" />
+	<meta name="description" content="" />
+	<meta property="og:title" content="" />
+	<meta property="og:description" content="" />
 	<meta property="og:image" content="../social-image.png" />
 	<meta name="format-detection" content="telephone=no">
-    <title>Jobie - Employer {{ $title ?? '' }} Dashboard </title>
+    <title>NaXum - Assessment </title>
     <!-- Favicon icon -->
 	
 	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">	
