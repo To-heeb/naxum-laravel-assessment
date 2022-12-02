@@ -45,7 +45,7 @@
 										<td>${{ $order->order_total }}</td>
                                         <td>{{ $order->percentage }}%</td>
                                         <td>${{ $order->commission }}</td>
-                                        <td><a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" data-id="{{$order->real_order_id}}">View</a></td>
+                                        <td><a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg" data-id="{{$order->real_order_id}}" data-invoice="{{$order->invoice_number}}">View</a></td>
 									</tr>
                                     @endforeach
 								</tbody>
@@ -61,7 +61,7 @@
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title">Invoice: <b></b></h5>
+							<h5 class="modal-title">Invoice: <b id="invoice-tag"></b></h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal">
 							</button>
 						</div>
@@ -103,26 +103,39 @@
 
 		
 		var order_id = $(e.relatedTarget).data('id');
-		alert(order_id);
+		var invoice_number = $(e.relatedTarget).data('invoice');
+		$('#table-body').html()
 		
-		var url = '{{  url("/order_items") }}',
-		//var url = '{{ route("/order_items") }}';
+		
+		var url = '{{  url("/order_items/:id") }}',
+		
 		url = url.replace(':id', order_id);
 
 		$.ajax({
 			url: url,
-			type: "POST",
+			type: "GET",
 			data: {
 				'order_id' : order_id, 
-				'_token' : "<?= @csrf ?>"
 			},
 			success: function(result){
 
 				console.log(result);
 				var output =    ''
+				result.forEach((order_item) => {
+                output += `
+						<tr>
+							<td>${order_item.sku}</td>
+							<td>${order_item.name}</td>
+							<td>${order_item.price}</td>
+							<td>${order_item.quantity}</td>
+							<td>${order_item.total}</td>
+						<tr>
+                    `;
+            })
 				
-				$('.modal-body').html(output);
-				$('.modal-title').html();
+				$("#invoice-tag").html(invoice_number)
+				//$('.modal-body').html(output);
+				$('#table-body').html(output);
 			},
 			error: function(error){
 				console.log(error);

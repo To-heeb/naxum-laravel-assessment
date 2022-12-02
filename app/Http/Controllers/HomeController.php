@@ -164,10 +164,10 @@ class HomeController extends Controller
         return view('task_two', compact('distributors'));
     }
 
-    public function get_order_items(Request $request)
+    public function get_order_items($order_id)
     {
-        dd($request);
-        $order_id = 24343;
+        //dd($request);
+        //$order_id = 24343;
         $order_items = DB::table('order_items')
             ->select('order_items.id as order_item_id', 'order_id', 'product_id', 'sku', 'name', 'quantity', 'price',  DB::raw('price*quantity  AS total'))
             ->where('order_id', $order_id)

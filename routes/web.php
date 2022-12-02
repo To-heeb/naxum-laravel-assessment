@@ -26,4 +26,4 @@ Route::get('/task_one', [HomeController::class, 'task_one'])->name('task_one');
 
 Route::get('/task_two', [HomeController::class, 'task_two'])->name('task_two');
 
-Route::post('order_items', [HomeController::class, 'get_order_items'])->name('order_items');
+Route::get('/order_items/{id}', [HomeController::class, 'get_order_items'])->name('order_items');

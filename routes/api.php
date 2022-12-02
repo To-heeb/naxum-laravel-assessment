@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/order_items/{id}', [HomeController::class, 'get_order_items'])->name('order_items');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
