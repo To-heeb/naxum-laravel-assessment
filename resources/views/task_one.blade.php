@@ -129,7 +129,7 @@
 							<td>${order_item.name}</td>
 							<td>${order_item.price}</td>
 							<td>${order_item.quantity}</td>
-							<td>${order_item.total}</td>
+							<td>$${order_item.total}</td>
 						<tr>
                     `;
             })
