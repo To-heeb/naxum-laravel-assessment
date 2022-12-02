@@ -104,6 +104,7 @@
 		
 		var order_id = $(e.relatedTarget).data('id');
 		var invoice_number = $(e.relatedTarget).data('invoice');
+		$("#invoice-tag").html(invoice_number)
 		$('#table-body').html()
 		
 		
@@ -133,7 +134,7 @@
                     `;
             })
 				
-				$("#invoice-tag").html(invoice_number)
+				
 				//$('.modal-body').html(output);
 				$('#table-body').html(output);
 			},
