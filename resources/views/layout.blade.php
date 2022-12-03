@@ -127,18 +127,23 @@
 </div>
 <!--**********************************
 	Footer end
-***********************************-->	</div>
+***********************************-->	
+</div>
 			
 			
-			<script src="{{ asset('assets/vendor/global/global.min.js') }}"></script>
 			
-			<script src="{{ asset('assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+			
 		
-			<script src="{{ asset('assets/js/dashboard/dashboard-1.js') }}"></script>
+			
 			<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+			<script src="{{ asset('assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+			<script src="{{ asset('assets/vendor/global/global.min.js') }}"></script>
+
+			<script src="{{ asset('assets/js/dashboard/dashboard-1.js') }}"></script>
 			<script src="{{ asset('assets/js/autocomplete.js') }}"></script>
 			<script src="{{ asset('assets/js/custom.js') }}"></script>
 			<script src="{{ asset('assets/js/deznav-init.js') }}"></script>
+		
 			
 
 			<script>	
