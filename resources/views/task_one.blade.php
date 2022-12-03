@@ -20,6 +20,36 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
+							<div class="row">
+								<form action="{{route('search')}}" method="GET">
+									<div class="row">
+										<div class="mb-3 col-md-6">
+											<label class="form-label">Distributor</label>
+											<input type="text" name="" id="search_term" class="form-control search_term typeahead" placeholder="Search by ID, Username, Firstname, Lastname">
+											<input type="hidden" name="user_id" id="user_id">
+											<div id="search_result"></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="mb-3 col-md-3">
+											<label class="form-label">Date From</label>
+											<input type="date" name="date_from" class="form-control" required>
+										</div>
+										<div class="mb-3 col-md-3">
+											<label class="form-label">Date To</label>
+											<input type="date" name="date_to" class="form-control" required>
+										</div>
+										<div class="mb-3 col-md-3">
+											<input type="submit" name="new_search" class="btn btn-primary btn-sm mt-md-4" value="Filter">
+										</div>
+									</div>
+								</form>
+								<div>
+									<p style="float: right;" class=""><b>Total Commission:</b> ${{$total_commission}}</p>
+									<p style="clear: both"></p>
+								</div>
+								
+							</div>
 							<table class="table table-responsive-md table-striped">
 								<thead>
 									<tr>
@@ -97,7 +127,10 @@
 @section('script')
 <script>
 
-
+	$(document).on('click', function(event){
+			
+			$("#search_result").html("")
+	})
 	//Ajax for Order's  details
 	$('#orderDetailsModal').on('show.bs.modal', function(e) {
 
@@ -106,6 +139,7 @@
 		var invoice_number = $(e.relatedTarget).data('invoice');
 		$("#invoice-tag").html(invoice_number)
 		$('#table-body').html()
+		//alert(order_id);
 		
 		
 		var url = '{{  url("/order_items/:id") }}',
@@ -121,7 +155,7 @@
 			success: function(result){
 
 				console.log(result);
-				var output =    ''
+				var output = '';
 				result.forEach((order_item) => {
                 output += `
 						<tr>
@@ -144,5 +178,41 @@
 		})
 
     })
+
+	var path = "{{ route('autocomplete') }}";
+	
+    $('input.typeahead').typeahead({
+        source:  function (terms, process) 
+        {
+          return $.get(path, { terms: terms }, function (data) {
+				console.log(data);
+				$("#search_result").html("")
+				// data = JSON.parse(data);
+				var output = '';
+				if(data.length > 0) {
+					
+					output += `<ul class="list-group" style="display:block;position:relative;z-index:1;">`;
+					data.forEach((data_details) => {
+						output += `<li class="list-group-item search-list" onMouseOver="this.style.backgroundColor='#40189D'; this.style.color='#fff';" onMouseOut="this.style.backgroundColor='#fff'; this.style.color='#000';" data-id="${data_details.id}">${data_details.first_name} ${data_details.last_name}</li>`;
+					})
+					output += `</ul>`
+				}else{
+					output += "<li class='list-group-item'>No Data Found</li>";
+				}
+				$("#search_result").html(output)
+                return process(data);
+
+            });
+        }
+    });
+
+
+	$(document).on('click', '.search-list', function(event){
+		var value = $(this).text();
+		var user_id = $(this).data('id');
+		$("#search_term").val(value);
+		$("#user_id").val(user_id);
+		$("#search_result").html("")
+	})
 </script>
 @endsection

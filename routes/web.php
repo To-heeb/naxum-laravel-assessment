@@ -20,10 +20,12 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/test', [HomeController::class, 'index'])->name('index');
-
 Route::get('/task_one', [HomeController::class, 'task_one'])->name('task_one');
 
 Route::get('/task_two', [HomeController::class, 'task_two'])->name('task_two');
 
+Route::get('/search', [HomeController::class, 'search'])->name('search');
+
 Route::get('/order_items/{id}', [HomeController::class, 'get_order_items'])->name('order_items');
+
+Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
